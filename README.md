@@ -1,1 +1,3 @@
-# INFT1016-janak-budha
+# INFT1016-Janak budha
+
+Janak budha
