@@ -96,3 +96,84 @@ git
 
 
 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 5</title>
+    <script>
+        let counter = 0;
+
+        function countClicks(element) {
+            counter = counter + 1;
+            var output = 'The link was pressed ' + counter + ' times.';
+            element.innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Demo - Task 5</h1>
+    #Click me</a>
+</body>
+
+git add task5.html
+git commit -m "Task 5: Updated countClicks to accept 'this' element and update its innerHTML"
+git push
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 6 - Image Swapping</title>
+</head>
+<body>
+    <h1>Hover over the image to see the swap!</h1>
+
+    <img 
+        src="http://www.outgrabe.net/cat01.jpg"
+        alt="The default cat image"
+        onmouseover="this.src='http://www.outgrabe.net/cat02.jpg'"
+        onmouseout="this.src='http://www.outgrabe.net/cat01.jpg'"
+    />
+
+</body>
+</html>
+feat(js): Implement image swap using onmouseover and onmouseout events
+
+This commit adds the required <img> tag with inline JavaScript event handlers.
+The onmouseover event changes the src property to cat02.jpg, and the onmouseout
+event restores the src property back to cat01.jpg, successfully implementing
+the dynamic image swap.
+
+http://www.outgrabe.net/cat01.jpg
+http://www.outgrabe.net/cat02.jpg
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 7</title>
+    <script>
+        // This variable counts how many times the link is clicked
+        let counter = 0;
+
+        /* This function updates the link text with the number of clicks */
+        function countClicks(element) {
+            counter = counter + 1;
+            var output = 'The link was pressed ' + counter + ' times.';
+            element.innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <!-- This link calls the countClicks function when clicked -->
+    #Click me</a>
+</</body>
+
+git add task7.html
+git commit -m "Task 7: Added HTML and JavaScript comments explaining logic"
+git push
+
