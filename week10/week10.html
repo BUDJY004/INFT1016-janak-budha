@@ -61,3 +61,38 @@ function countClicks() {
 Updated JavaScript to dynamically insert HTML using innerHTML for click counter (Task 3)”
 
 
+Refactored JavaScript into functions using script tags for cleaner and more maintainable code.”
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Week 11</title>
+
+    <script>
+        // Initialize counter when the page loads
+        let counter = 0;
+
+        // Function to count clicks and update the DOM
+        function countClicks() {
+            counter = counter + 1;
+            var output = 'The link was pressed ' + counter + ' times.';
+            var element = document.getElementById('boxy');
+            element.innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Demo</h1>
+    #Click me</a>
+    <p id="boxy"></p>
+</body>
+</html>
+
+git add task4.html
+git commit -m "Task 4: Add click counter function and DOM update (innerHTML on #boxy)"
+git
+
+
+
