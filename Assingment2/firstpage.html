@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Chrome Style Page</title>
+
+<style>
+/* ===== Chrome-like Design ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #202124;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #f1f3f4;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white;
+}
+
+main {
+    text-align: center;
+    margin-top: 80px;
+}
+
+input {
+    padding: 10px;
+    width: 220px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+#time {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #5f6368;
+}
+
+/* ===== Dark Mode ===== */
+.dark {
+    background-color: #202124;
+    color: #e8eaed;
+}
+
+.dark header {
+    background-color: #303134;
+}
+
+.dark input {
+    background-color: #303134;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark button {
+    background-color: #8ab4f8;
+    color: black;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div id="greeting">Welcome</div>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+</header>
+
+<main>
+    <h1>Google-Style Home</h1>
+
+    <div id="nameBox">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <br><br>
+        <button onclick="saveName()">Save Name</button>
+    </div>
+
+    <div id="time">Loading Adelaide time...</div>
+</main>
+
+<script>
+/* ===== Theme Save ===== */
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+}
+
+/* Load saved theme */
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+}
+
+/* ===== Name Save & Greet ===== */
+function saveName() {
+    let name = document.getElementById("nameInput").value;
+    if (name) {
+        localStorage.setItem("username", name);
+        showGreeting(name);
+    }
+}
+
+function showGreeting(name) {
+    document.getElementById("greeting").innerText = "Hello, " + name + " 👋";
+    document.getElementById("nameBox").style.display = "none";
+}
+
+/* Load saved name */
+let savedName = localStorage.getItem("username");
+if (savedName) {
+    showGreeting(savedName);
+}
+
+/* ===== Adelaide Time ===== */
+function updateTime() {
+    let options = {
+        timeZone: "Australia/Adelaide",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    };
+    let time = new Date().toLocaleTimeString("en-AU", options);
+    document.getElementById("time").innerText =
+        "Adelaide Time: " + time;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+
+</body>
+</html>
