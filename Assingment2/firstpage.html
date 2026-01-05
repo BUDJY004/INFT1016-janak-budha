@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Chrome Style Page</title>
+<title>Chrome Style Page</title>
 
 <style>
-/* ===== Chrome-like Design ===== */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -30,6 +29,7 @@ button {
     cursor: pointer;
     background-color: #1a73e8;
     color: white;
+    margin-left: 5px;
 }
 
 main {
@@ -44,13 +44,7 @@ input {
     border: 1px solid #ccc;
 }
 
-#time {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #5f6368;
-}
-
-/* ===== Dark Mode ===== */
+/* Dark mode */
 .dark {
     background-color: #202124;
     color: #e8eaed;
@@ -70,6 +64,12 @@ input {
     background-color: #8ab4f8;
     color: black;
 }
+
+#time {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #5f6368;
+}
 </style>
 </head>
 
@@ -77,7 +77,10 @@ input {
 
 <header>
     <div id="greeting">Welcome</div>
-    <button onclick="toggleTheme()">Toggle Theme</button>
+    <div>
+        <button onclick="changeName()">Change Name</button>
+        <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
 </header>
 
 <main>
@@ -93,22 +96,22 @@ input {
 </main>
 
 <script>
-/* ===== Theme Save ===== */
+// ===== Theme =====
 function toggleTheme() {
     document.body.classList.toggle("dark");
-    localStorage.setItem("theme",
+    localStorage.setItem(
+        "theme",
         document.body.classList.contains("dark") ? "dark" : "light"
     );
 }
 
-/* Load saved theme */
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
 }
 
-/* ===== Name Save & Greet ===== */
+// ===== Name =====
 function saveName() {
-    let name = document.getElementById("nameInput").value;
+    let name = document.getElementById("nameInput").value.trim();
     if (name) {
         localStorage.setItem("username", name);
         showGreeting(name);
@@ -120,13 +123,19 @@ function showGreeting(name) {
     document.getElementById("nameBox").style.display = "none";
 }
 
-/* Load saved name */
+function changeName() {
+    localStorage.removeItem("username");
+    document.getElementById("nameInput").value = "";
+    document.getElementById("nameBox").style.display = "block";
+    document.getElementById("greeting").innerText = "Welcome";
+}
+
 let savedName = localStorage.getItem("username");
 if (savedName) {
     showGreeting(savedName);
 }
 
-/* ===== Adelaide Time ===== */
+// ===== Adelaide Time =====
 function updateTime() {
     let options = {
         timeZone: "Australia/Adelaide",
@@ -134,9 +143,9 @@ function updateTime() {
         minute: "2-digit",
         second: "2-digit"
     };
-    let time = new Date().toLocaleTimeString("en-AU", options);
     document.getElementById("time").innerText =
-        "Adelaide Time: " + time;
+        "Adelaide Time: " +
+        new Date().toLocaleTimeString("en-AU", options);
 }
 
 setInterval(updateTime, 1000);
