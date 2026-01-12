@@ -211,3 +211,77 @@ function showKoala() {
         "Koalas live in eucalyptus trees and sleep most of the day.<br>" +
         "<a id='animalLink' href='https://www.pexels.com/photo/koala-on-tree-674010/' target='_blank'>Image source</a>";
 }
+
+
+/* Light Theme (default) */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --bg-color: white;
+    --font-color: black;
+    --heading-color: #2c3e50;
+}
+
+/* Dark Theme */
+.darkmode {
+    --primary-color: #9b59b6;
+    --secondary-color: #1abc9c;
+    --bg-color: #121212;
+    --font-color: white;
+    --heading-color: #ecf0f1;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: var(--heading-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme Toggle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<main>
+    <h1>Theme Toggle Example</h1>
+    <p>This page can switch between light and dark mode.</p>
+
+    <button onclick="toggleTheme()">Toggle Theme</button>
+</main>
+
+</body>
+</html>
+
+
+
+
+let themeStatus = 'light';
+
+function toggleTheme() {
+    if (themeStatus !== 'dark') {
+        document.body.classList.add('darkmode');
+        themeStatus = 'dark';
+    } else {
+        document.body.classList.remove('darkmode');
+        themeStatus = 'light';
+    }
+}
