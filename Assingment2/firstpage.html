@@ -158,3 +158,57 @@ updateTime();
 
 
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wildlife Image Switcher</title>
+
+    <script>
+        // Function to display Koala information
+        function showKoala() {
+            document.getElementById("photo").src =
+                "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg";
+            document.getElementById("info").innerHTML =
+                'Koala – Photo from <a href="https://www.pexels.com/photo/koala-on-tree-674010/" target="_blank">Pexels</a>';
+        }
+
+        // Function to display Kangaroo information
+        function showKangaroo() {
+            document.getElementById("photo").src =
+                "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg";
+            document.getElementById("info").innerHTML =
+                'Kangaroo – Photo from <a href="https://www.pexels.com/photo/kangaroo-on-field-145939/" target="_blank">Pexels</a>';
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Australian Wildlife Gallery</h1>
+
+        <!-- Default image shown on page load -->
+        <img id="photo"
+             src="https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg"
+             alt="Kangaroo"
+             width="400">
+
+        <!-- Description text with link -->
+        <p id="info">
+            Kangaroo – Photo from
+            <a href="https://www.pexels.com/photo/kangaroo-on-field-145939/" target="_blank">
+                Pexels
+            </a>
+        </p>
+
+        <!-- Buttons -->
+        <button onclick="showKangaroo()">Kangaroo</button>
+        <button onclick="showKoala()">Koala</button>
+    </main>
+</body>
+</html>
+
+
+
