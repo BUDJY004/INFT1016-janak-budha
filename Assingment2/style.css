@@ -1,0 +1,58 @@
+
+/* LIGHT MODE */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --bg-color: #ffffff;
+    --font-color: #333333;
+    --heading-color: #1a1a1a;
+}
+
+/* DARK MODE */
+.darkmode {
+    --primary-color: #ecf0f1;
+    --secondary-color: #9b59b6;
+    --bg-color: #121212;
+    --font-color: #e0e0e0;
+    --heading-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--secondary-color);
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+h1, h2 {
+    color: var(--heading-color);
+}
+
+main {
+    padding: 20px;
+}
+
+img {
+    width: 300px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+}
