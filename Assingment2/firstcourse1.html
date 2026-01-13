@@ -175,27 +175,31 @@ setInterval(updateTime, 1000);
 updateTime();
 
 // ===== Image Swap =====
-function showImageA() {
-    document.getElementById("displayImage").src =
-        "https://tse3.mm.bing.net/th/id/OIP.D1RLSq_S0skCavtfTxcUjAHaE8?pid=ImgDet&w=474&h=316&rs=1&o=7&rm=3";
+function showImage(imageUrl, descriptionText) {
+    const img = document.getElementById("displayImage");
+    const desc = document.getElementById("imageDescription");
 
-    document.getElementById("imageDescription").innerText =
-        "Picture A: A calm and peaceful outdoor scene.";
+    img.src = imageUrl;
+    desc.innerText = descriptionText;
 
-    document.getElementById("displayImage").style.display = "block";
-    document.getElementById("imageDescription").style.display = "block";
+    img.style.display = "block";
+    desc.style.display = "block";
 }
+function showImageA() {
+    showImage(
+        "https://tse3.mm.bing.net/th/id/OIP.D1RLSq_S0skCavtfTxcUjAHaE8?pid=ImgDet&w=474&h=316&rs=1&o=7&rm=3",
+        "Picture A: A calm and peaceful outdoor natural scene."
+    );
+}
+
 
 function showImageB() {
-    document.getElementById("displayImage").src =
-        "https://static.vecteezy.com/system/resources/thumbnails/031/691/778/small_2x/within-gym-with-modern-fitness-equipment-for-fitness-events-and-more-modern-of-gym-interior-with-equipment-sports-equipment-in-the-gym-created-with-generative-ai-photo.jpg";
-
-    document.getElementById("imageDescription").innerText =
-        "Picture B: A modern gym interior with fitness equipment.";
-
-    document.getElementById("displayImage").style.display = "block";
-    document.getElementById("imageDescription").style.display = "block";
+    showImage(
+        "https://static.vecteezy.com/system/resources/thumbnails/031/691/778/small_2x/within-gym-with-modern-fitness-equipment-for-fitness-events-and-more-modern-of-gym-interior-with-equipment-sports-equipment-in-the-gym-created-with-generative-ai-photo.jpg",
+        "Picture B: A modern gym interior with advanced fitness equipment."
+    );
 }
+
 
 // ⭐ Load Picture A automatically on page load
 window.onload = function () {
