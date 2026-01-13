@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en" onload="loadPreferences()">
+<head>
+    <meta charset="UTF-8">
+    <title>Eynesbury College – Trimester</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<header>
+    <h1 id="myheading">Hello!</h1>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="courses.html">Courses</a>
+    </nav>
+
+    <button onclick="toggleTheme()">Toggle Theme</button>
+</header>
+
+<main>
+    <!-- USER NAME INPUT -->
+    <section>
+        <input type="text" id="username" placeholder="Enter your name!">
+        <button onclick="applyName()">Apply!</button>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>My Trimester at Eynesbury</h2>
+        <p>
+            This trimester at Eynesbury College focuses on building foundational
+            IT and academic skills while adapting to tertiary study.
+        </p>
+    </section>
+
+    <!-- IMAGE & BUTTON INTERACTION -->
+    <section id="gallery">
+        <h2>Australian Wildlife</h2>
+
+        <!-- Image -->
+        <img id="mainImage" src="images/kangaroo.jpg" alt="Kangaroo">
+
+        <!-- Text -->
+        <p id="imageText">
+            Kangaroos are iconic Australian animals known for their strength and agility.
+            <br>
+            <a id="imageLink" href="https://www.pexels.com/search/kangaroo/" target="_blank">
+                Image source
+            </a>
+        </p>
+
+        <!-- Buttons -->
+        <button onclick="showKangaroo()">Kangaroo</button>
+        <button onclick="showKoala()">Koala</button>
+    </section>
+
+    <!-- DATE & TIME -->
+    <section>
+        <p id="datetime"></p>
+    </section>
+</main>
+
+<footer>
+    <p>© Eynesbury College Project</p>
+</footer>
+
+</body>
+</html>
