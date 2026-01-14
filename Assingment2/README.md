@@ -1,102 +1,109 @@
 
-# Eynesbury College – Trimester Web Project
+# Single-Page Planner & Gallery Web App
 
-## 📘 Project Overview
+## Overview
 
-This project is a simple multi-page website created as part of an Eynesbury College assignment. It demonstrates the use of **HTML**, **CSS**, and **JavaScript** to build an interactive and user-friendly website.
+This is a **single-page web application** combining multiple interactive features into a clean, modern interface. The website includes:
 
-The website includes:
-
-* A main home page with information about the trimester
-* A courses page describing first trimester subjects
-* Light and dark theme switching
-* User name personalization
-* Image gallery with descriptions
-* Date and time display
+* **Name greeting:** Save and change your name.
+* **Dark/Light theme toggle:** Theme choice persists across page reloads using `localStorage`.
+* **Adelaide clock:** Real-time display of Adelaide, Australia time.
+* **Image gallery:** Swap between two images (Picture A & Picture B) with descriptions.
+* **To-Do list:** Add, delete, and save tasks in `localStorage` for persistence.
+* Fully **responsive**, single-page layout with smooth, modern styling.
 
 ---
 
-## 📂 Project Structure
+## Features
+
+### 1. Name Greeting
+
+* Input your name to personalize the page.
+* Name is stored in `localStorage`, so it persists after refreshing the page.
+* Option to reset/change your name.
+
+### 2. Dark/Light Mode
+
+* Toggle the theme with a button.
+* Current theme is saved in `localStorage` for persistence.
+
+### 3. Adelaide Clock
+
+* Displays the current time in Adelaide, Australia.
+* Updates every second automatically.
+
+d.
+
+### 5. Goals List
+
+* Add tasks through a text input.
+* Delete tasks by clicking on them.
+* Tasks persist in `localStorage`.
+* Load saved tasks anytime with the "Load Tasks" button.
+
+---
+
+## How to Use
+
+1. **Open the HTML file:**
+   Open the `.html` file in any modern web browser.
+
+2. **Set your name:**
+
+   * Enter your name in the input box and click “Save Name”.
+   * Change name anytime with the “Change Name” button.
+
+3. **Toggle theme:**
+
+   * Click “Toggle Theme” to switch between dark and light modes.
+
+4. **View time:**
+
+   * The Adelaide time automatically updates every second.
+
+5. **Image gallery:**
+
+   * Click “Show Picture A” or “Show Picture B” to swap images and their descriptions.
+
+6. **To-Do list:**
+
+   * Enter a task in the input box and click “Add Task”.
+   * Click on a task to remove it.
+   * Click “Load Tasks” to reload saved tasks from `localStorage`.
+
+---
+
+## Technologies Used
+
+* **HTML5** – Structure of the web page
+* **CSS3** – Styling and dark/light mode
+* **JavaScript** – Dynamic features: theme toggle, Adelaide clock, image swap, to-do list, and localStorage
+
+---
+
+**PASSWORD : Janakbudha$1234
+
+## File Structure
 
 ```
-/project-folder
-│
-├── index.html        # Main page
-├── courses.html      # Courses page
-├── styles.css        # Styling and theme management
-├── script.js         # JavaScript functionality
-└── images/
-    ├── kangaroo.jpg
-    └── koala.jpg
+single-page-app.html   <- Main HTML file with embedded CSS & JS
 ```
 
----
-
-## ✨ Features
-
-### 🌗 Light / Dark Theme
-
-* Toggle button to switch between light and dark modes
-* Theme preference is saved using `localStorage`
-
-### 👤 User Name Greeting
-
-* User can enter their name
-* Greeting updates dynamically (e.g., *Hello, John!*)
-* Name is stored in `localStorage` and loaded on refresh
-
-### 🖼️ Image Gallery
-
-* Displays Australian wildlife images (Kangaroo & Koala)
-* Buttons switch images dynamically
-* Image description and source link update automatically
-
-### ⏰ Date & Time
-
-* Displays the current date and time
-* Automatically updates when the page loads
-
-### 🧭 Navigation
-
-* Easy navigation between Home and Courses pages
-* Uses semantic HTML structure (`header`, `main`, `footer`)
+*Everything is self-contained in one file; no external dependencies.*
 
 ---
 
-## 🛠️ Technologies Used
+## Notes
 
-* **HTML5** – Page structure and content
-* **CSS3** – Styling, layout, and theme variables
-* **JavaScript (ES6)** – Interactivity and dynamic behavior
-* **LocalStorage API** – Saving user preferences
-
----
-
-## ▶️ How to Run the Project
-
-1. Download or clone the project files
-2. Make sure all files are in the same folder structure
-3. Open `index.html` in any modern web browser
-4. Use the navigation links and buttons to interact with the site
+* Works offline in modern browsers.
+* Dark/light mode, name, and tasks persist thanks to `localStorage`.
+* No server or backend required.
 
 ---
 
-## 🎓 Learning Outcomes
+## Future Improvements
 
-This project demonstrates:
-
-* Linking multiple HTML pages
-* Using external CSS and JavaScript files
-* DOM manipulation with JavaScript
-* Using CSS variables for theming
-* Saving and loading data using `localStorage`
-
----
-
-## 🏫 Academic Note
-
-This project was created for educational purposes as part of coursework at **Eynesbury College**.
-
----
-
-© Eynesbury College Project
+* Smooth scrolling for header links
+* Add task priorities or due dates
+* Add image gallery with more pictures
+* Make the to-do
