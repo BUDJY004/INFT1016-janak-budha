@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aurora Programs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<header class="nav">
+  <h2>📘 Programs</h2>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Programs</a>
+    <a href="goals.html">Goals</a>
+  </nav>
+
+  <button id="themeBtn">☀️</button>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content">
+  <h1>Our Courses</h1>
+
+  <section class="course">
+    <h2>🧠 Design & Creative Thinking</h2>
+    <p>
+      This course teaches students how to understand problems from a human
+      perspective. You will learn how to research user needs, brainstorm ideas,
+      and present creative solutions clearly and professionally.
+    </p>
+    <p class="extra hidden">
+      The course also focuses on teamwork, communication skills, and reflection,
+      helping students prepare for real-world project environments.
+    </p>
+    <button class="readBtn">Read more</button>
+  </section>
+
+  <section class="course">
+    <h2>💻 Problem Solving & Programming</h2>
+    <p>
+      This subject introduces programming concepts such as variables, decision
+      making, loops, and debugging. Students learn how to think logically and
+      solve problems using code.
+    </p>
+    <p class="extra hidden">
+      You will also practice writing clean, efficient programs while building
+      confidence in understanding how software works.
+    </p>
+    <button class="readBtn">Read more</button>
+  </section>
+
+  <section class="course">
+    <h2>🌐 Network Fundamentals</h2>
+    <p>
+      This course explains how computers and devices communicate through
+      networks. Students learn about network types, basic security, and
+      troubleshooting techniques.
+    </p>
+    <p class="extra hidden">
+      Topics include IP addressing, routers, switches, and understanding how
+      data travels across the internet.
+    </p>
+    <button class="readBtn">Read more</button>
+  </section>
+
+  <section class="course">
+    <h2>🖥️ IT Foundations</h2>
+    <p>
+      This course provides essential knowledge of computer hardware, software,
+      and operating systems. It helps students become confident users of
+      technology.
+    </p>
+    <p class="extra hidden">
+      Students also learn about ethical IT use, system maintenance, and basic
+      data management concepts.
+    </p>
+    <button class="readBtn">Read more</button>
+  </section>
+</main>
+
+<script>
+  /* ===== DARK MODE WITH SAVE ===== */
+  const themeBtn = document.getElementById("themeBtn");
+
+  // Load saved theme on page load
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "🌙";
+  }
+
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    themeBtn.textContent = isDark ? "🌙" : "☀️";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  /* ===== READ MORE BUTTONS ===== */
+  document.querySelectorAll(".readBtn").forEach(button => {
+    button.addEventListener("click", () => {
+      const extraText = button.previousElementSibling;
+      extraText.classList.toggle("hidden");
+
+      button.textContent =
+        extraText.classList.contains("hidden")
+          ? "Read more"
+          : "Show less";
+    });
+  });
+</script>
+<style>
+  :root {
+    --bg: #f4fefe;
+    --text: #0f2f3a;
+    --nav: #0b4f6c;
+    --card: #ffffff;
+    --btn: #ff6f61;
+  }
+
+  body.dark {
+    --bg: #0b1e24;
+    --text: #e8f8fb;
+    --nav: #041217;
+    --card: #122b33;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+  }
+
+  .nav {
+    background: var(--nav);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+  }
+
+  button {
+    background: var(--btn);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+
+  .course {
+    background: var(--card);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+</body>
+</html>
