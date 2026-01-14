@@ -1,72 +1,240 @@
 
 <!DOCTYPE html>
-<html lang="en" onload="loadPreferences()">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Eynesbury College – Trimester</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<title>Home</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #202124;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #f1f3f4;
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white;
+    margin-left: 5px;
+}
+
+main {
+    text-align: center;
+    margin-top: 80px;
+}
+
+input {
+    padding: 10px;
+    width: 220px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Dark mode */
+.dark {
+    background-color: #202124;
+    color: #e8eaed;
+}
+
+.dark header {
+    background-color: #303134;
+}
+
+.dark input {
+    background-color: #303134;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark button {
+    background-color: #8ab4f8;
+    color: black;
+}
+
+#time {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #5f6368;
+}
+
+.dark #time {
+    color: #bdc1c6;
+}
+
+/* Centered image */
+#displayImage {
+    width: 350px;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: none;
+}
+
+/* NAV LINKS (added only) */
+nav a {
+    text-decoration: none;
+    margin: 0 6px;
+    padding: 6px 14px;
+    background-color: #e8eaed;
+    color: #202124;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.dark nav a {
+    background-color: #5f6368;
+    color: white;
+}
+</style>
 </head>
 
 <body>
-<header>
-    <h1 id="myheading">Hello!</h1>
 
+<header>
+    <div id="greeting">Welcome</div>
+
+    <!-- LINKS -->
     <nav>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="courses.html">Courses</a>
+        <a href="index.html">Home</a>
+        <a href="Courses.html">Courses</a>
+        <a href="goals.html">Goals</a>
     </nav>
 
-    <button onclick="toggleTheme()">Toggle Theme</button>
+    <div>
+        <button onclick="changeName()">Change Name</button>
+        <button onclick="toggleTheme()">☀️</button>
+    </div>
 </header>
 
-<main>
-    <!-- USER NAME INPUT -->
-    <section>
-        <input type="text" id="username" placeholder="Enter your name!">
-        <button onclick="applyName()">Apply!</button>
-    </section>
+<main id="home">
+    <h1>Home</h1>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>My Trimester at Eynesbury</h2>
+    <div id="nameBox">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <br><br>
+        <button onclick="saveName()">Save Name</button>
+    </div>
+
+    <div id="time">Loading Adelaide time...</div>
+
+    <!-- IMAGE SECTION -->
+    <div id="imageSection" style="margin-top:40px;" id="images">
+        <img id="displayImage" src="" alt="Displayed Image">
+        <p id="imageDescription" style="font-size:16px; display:none;"></p>
+
+        <button onclick="showImageA()">Show Picture A</button>
+        <button onclick="showImageB()">Show Picture B</button>
+    </div>
+
+    <!-- EXTRA SECTION JUST FOR LINKING -->
+    <section id="info" style="margin-top:80px;">
+        <h2>More Information</h2>
         <p>
-            This trimester at Eynesbury College focuses on building foundational
-            IT and academic skills while adapting to tertiary study.
+            This section exists to demonstrate navigation within a single-page
+            website. The links in the header smoothly jump to different parts
+            of the same document without reloading the page.
         </p>
-    </section>
-
-    <!-- IMAGE & BUTTON INTERACTION -->
-    <section id="gallery">
-        <h2>Australian Wildlife</h2>
-
-        <!-- Image -->
-        <img id="mainImage" src="images/kangaroo.jpg" alt="Kangaroo">
-
-        <!-- Text -->
-        <p id="imageText">
-            Kangaroos are iconic Australian animals known for their strength and agility.
-            <br>
-            <a id="imageLink" href="https://www.pexels.com/search/kangaroo/" target="_blank">
-                Image source
-            </a>
-        </p>
-
-        <!-- Buttons -->
-        <button onclick="showKangaroo()">Kangaroo</button>
-        <button onclick="showKoala()">Koala</button>
-    </section>
-
-    <!-- DATE & TIME -->
-    <section>
-        <p id="datetime"></p>
     </section>
 </main>
 
-<footer>
-    <p>© Eynesbury College Project</p>
-</footer>
+<script>
+// ===== Theme =====
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+}
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+}
+
+// ===== Name =====
+function saveName() {
+    let name = document.getElementById("nameInput").value.trim();
+    if (name) {
+        localStorage.setItem("username", name);
+        showGreeting(name);
+    }
+}
+
+function showGreeting(name) {
+    document.getElementById("greeting").innerText = "Hello, " + name + " 👋";
+    document.getElementById("nameBox").style.display = "none";
+}
+
+function changeName() {
+    localStorage.removeItem("username");
+    document.getElementById("nameInput").value = "";
+    document.getElementById("nameBox").style.display = "block";
+    document.getElementById("greeting").innerText = "Welcome";
+}
+
+let savedName = localStorage.getItem("username");
+if (savedName) {
+    showGreeting(savedName);
+}
+
+// ===== Adelaide Time =====
+function updateTime() {
+    let options = {
+        timeZone: "Australia/Adelaide",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    };
+    document.getElementById("time").innerText =
+        "Adelaide Time: " +
+        new Date().toLocaleTimeString("en-AU", options);
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+// ===== Image Swap =====
+function showImageA() {
+    document.getElementById("displayImage").src =
+        "https://tse3.mm.bing.net/th/id/OIP.D1RLSq_S0skCavtfTxcUjAHaE8?pid=ImgDet&w=474&h=316&rs=1&o=7&rm=3";
+
+    document.getElementById("imageDescription").innerText =
+        "Picture A: A calm and peaceful outdoor scene.";
+
+    document.getElementById("displayImage").style.display = "block";
+    document.getElementById("imageDescription").style.display = "block";
+}
+
+function showImageB() {
+    document.getElementById("displayImage").src =
+        "https://static.vecteezy.com/system/resources/thumbnails/031/691/778/small_2x/within-gym-with-modern-fitness-equipment-for-fitness-events-and-more-modern-of-gym-interior-with-equipment-sports-equipment-in-the-gym-created-with-generative-ai-photo.jpg";
+
+    document.getElementById("imageDescription").innerText =
+        "Picture B: A modern gym interior with fitness equipment.";
+
+    document.getElementById("displayImage").style.display = "block";
+    document.getElementById("imageDescription").style.display = "block";
+}
+
+// ⭐ Load Picture A automatically on page load
+window.onload = function () {
+    showImageA();
+};
+</script>
 
 </body>
 </html>
